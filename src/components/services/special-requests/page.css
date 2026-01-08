@@ -1,0 +1,66 @@
+.special-bg {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
+}
+
+.special-overlay {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.special-card {
+  width: 460px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 32px;
+  color: white;
+}
+
+.special-card h1 {
+  margin-bottom: 6px;
+}
+
+.special-card p {
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+.special-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.special-form input,
+.special-form select,
+.special-form textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.special-form textarea {
+  resize: none;
+  height: 100px;
+}
+
+.special-form button[type="submit"] {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-bottom: 16px;
+  cursor: pointer;
+}

@@ -1,0 +1,66 @@
+.late-bg {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
+}
+
+.late-overlay {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.late-card {
+  width: 440px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 32px;
+  color: white;
+}
+
+.late-card h1 {
+  margin-bottom: 6px;
+}
+
+.late-card p {
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+.late-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.late-form input,
+.late-form select,
+.late-form textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.late-form textarea {
+  resize: none;
+  height: 80px;
+}
+
+.late-form button[type="submit"] {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-bottom: 16px;
+  cursor: pointer;
+}

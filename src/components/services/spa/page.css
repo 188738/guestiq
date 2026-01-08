@@ -1,0 +1,75 @@
+.spa-bg {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
+}
+
+.spa-overlay {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spa-card {
+  width: 480px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 32px;
+  color: white;
+}
+
+.spa-card h1 {
+  margin-bottom: 6px;
+}
+
+.spa-card p {
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+.spa-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.spa-form input,
+.spa-form select,
+.spa-form textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+.row input {
+  flex: 1;
+}
+
+.spa-form textarea {
+  resize: none;
+  height: 90px;
+}
+
+.spa-form button[type="submit"] {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: white;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-bottom: 16px;
+  cursor: pointer;
+}

@@ -1,0 +1,85 @@
+/* Full background image */
+.home-bg {
+  height: 100vh;
+  background-image: url("../../hotel.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Dark overlay for readability */
+.overlay {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main content */
+.home-container {
+  max-width: 1000px;
+  padding: 40px;
+  color: #ffffff;
+}
+
+/* Title */
+.home-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+/* Subtitle */
+.home-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+}
+
+/* Card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+}
+
+/* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 28px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Icons */
+.icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* Card text */
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.h1 {
+    margin-left: 40px;
+}

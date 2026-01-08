@@ -1,0 +1,66 @@
+.house-bg {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
+}
+
+.house-overlay {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.house-card {
+  width: 460px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 32px;
+  color: white;
+}
+
+.house-card h1 {
+  margin-bottom: 6px;
+}
+
+.house-card p {
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+.house-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.house-form input,
+.house-form select,
+.house-form textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.house-form textarea {
+  resize: none;
+  height: 90px;
+}
+
+.house-form button[type="submit"] {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-bottom: 16px;
+  cursor: pointer;
+}

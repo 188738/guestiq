@@ -1,0 +1,108 @@
+/* src/components/simulate/page.css */
+
+.simulate-bg {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55));
+}
+
+.simulate-overlay {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.simulate-card {
+  width: 560px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 34px;
+  color: white;
+}
+
+.simulate-card h1 {
+  margin-bottom: 6px;
+}
+
+.simulate-card p {
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+/* Buttons */
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.primary-btn,
+.secondary-btn,
+.ghost-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary-btn {
+  background: white;
+  color: #000;
+}
+
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.ghost-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+}
+
+.primary-btn:disabled,
+.secondary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Log area */
+
+.log-box {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+  padding: 16px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.log-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.log-item small {
+  opacity: 0.7;
+}
+
+.placeholder {
+  text-align: center;
+  opacity: 0.6;
+}
+
+/* Back button */
+
+.back-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-bottom: 16px;
+  cursor: pointer;
+}

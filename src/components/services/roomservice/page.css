@@ -1,0 +1,66 @@
+.room-bg {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
+}
+
+.room-overlay {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.room-card {
+  width: 420px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 32px;
+  color: white;
+}
+
+.room-card h1 {
+  margin-bottom: 6px;
+}
+
+.room-card p {
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.room-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.room-card input,
+.room-card select,
+.room-card textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.room-card textarea {
+  resize: none;
+  height: 80px;
+}
+
+.room-card button[type="submit"] {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-bottom: 16px;
+  cursor: pointer;
+}

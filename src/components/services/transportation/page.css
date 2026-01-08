@@ -1,0 +1,75 @@
+.transport-bg {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
+}
+
+.transport-overlay {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transport-card {
+  width: 500px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 32px;
+  color: white;
+}
+
+.transport-card h1 {
+  margin-bottom: 6px;
+}
+
+.transport-card p {
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+.transport-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.transport-form input,
+.transport-form select,
+.transport-form textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+.row input {
+  flex: 1;
+}
+
+.transport-form textarea {
+  resize: none;
+  height: 90px;
+}
+
+.transport-form button[type="submit"] {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
