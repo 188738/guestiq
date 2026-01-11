@@ -1,4 +1,4 @@
-STAYSYNC
+GuestIQ
 Smart Guest Engagement powered by real-time Klaviyo Events
 
 --------------------------------------------------
@@ -13,9 +13,9 @@ Every guest action becomes:
 - A trigger for email, SMS, loyalty, and marketing automation
 
 --------------------------------------------------
-WHAT STAYSYNC DOES
+WHAT GuestIQ DOES
 
-StaySync connects:
+GuestIQ connects:
 
 React Frontend
 → Flask API
@@ -146,9 +146,17 @@ These can trigger:
 WHY THIS PROJECT MATTERS
 
 Hotels run on disconnected systems.
-StaySync turns them into a real-time CRM.
+GuestIQ turns them into a real-time CRM.
 
 This is Klaviyo for hospitality.
+
+It shows what each user ordered and how many events each. For example, if a user had 40 actions vs 2 actions he or she is a high value user and the hotel can market to them. 
+
+Additionaly:
+
+There are some users who have multiple check ins and check outs. This was just me testing.
+
+Use of AI: I used AI to tweak methods accordingly. Once I wrote the method for handleSubmit in checkIn, I made Chat GPT LLM made a method of the same way for checkout, and all of the services so that I can be more efficient. It is the same logic. However, instead of me typing out the new variables every single time, it would be very helpful if I could get that done with the LLM.
 
 --------------------------------------------------
 END
