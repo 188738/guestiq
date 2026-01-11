@@ -384,6 +384,53 @@ def transportation():
 
     return jsonify({"success": True, "id": doc_id})
 
+import random
+
+@app.route("/guests", methods=["GET"])
+def get_guests():
+    collections = [
+        "checkins",
+        "checkouts",
+        "housekeeping",
+        "lateCheckouts",
+        "roomService",
+        "spaAppointments",
+        "transportation",
+        "specialRequests"
+    ]
+
+    fallback_names = ["Jill", "Jake", "Vellery", "Swati", "James", "Vikram"]
+
+    guests = {}
+
+    for col in collections:
+        docs = db.collection(col).stream()
+
+        for doc in docs:
+            d = doc.to_dict()
+
+            room = d.get("room", "Unknown")
+            email = d.get("email")
+
+            # Unique guest key
+            key = email or f"room-{room}"
+
+            if key not in guests:
+                guests[key] = {
+                    "name": d.get("name") or random.choice(fallback_names),
+                    "email": email,
+                    "room": room,
+                    "events": []
+                }
+
+            guests[key]["events"].append({
+                "type": col,
+                "time": str(d.get("timestamp", "")),
+                "data": d
+            })
+
+    return jsonify(list(guests.values()))
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5001)
