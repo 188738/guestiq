@@ -22,28 +22,104 @@ function SimulateStay() {
     timersRef.current = [];
   };
 
-  const runSimulation = () => {
-    clearTimers();
-    setLogs([]);
-    setIsRunning(true);
+  const runSimulation = async () => {
+  clearTimers();
+  setLogs([]);
+  setIsRunning(true);
 
-    const schedule = (ms, fn) => {
-      const id = setTimeout(fn, ms);
-      timersRef.current.push(id);
-    };
+  const baseURL = "http://127.0.0.1:5001";
 
-    schedule(400, () => addLog("🏨 Guest checked in — Room 412 (Ava Patel)"));
-    schedule(1200, () => addLog("📩 Welcome message sent (demo)"));
-    schedule(2000, () => addLog("🍽️ Room service ordered — Burger & Fries"));
-    schedule(2800, () => addLog("💆 Spa booked — Swedish Massage @ 3:00 PM"));
-    schedule(3600, () => addLog("🧹 Housekeeping requested — Extra towels"));
-    schedule(4400, () => addLog("⏰ Late checkout requested — 1:00 PM"));
-    schedule(5200, () => addLog("🚗 Transportation scheduled — Airport drop-off"));
-    schedule(6200, () => {
-      addLog("🧾 Checkout complete — Rating: 5⭐");
-      setIsRunning(false);
-    });
+  const guest = {
+    name: "Ava Patel",
+    email: "ava@demo.com",
+    room: "412",
+    nights: 2
   };
+
+  const send = async (path, payload, label) => {
+    try {
+      await fetch(`${baseURL}${path}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      addLog(label);
+    } catch (err) {
+      addLog("❌ Failed: " + label);
+    }
+  };
+
+  const schedule = (ms, fn) => {
+    const id = setTimeout(fn, ms);
+    timersRef.current.push(id);
+  };
+
+  // 1️⃣ Check-in
+  schedule(400, () =>
+    send("/checkin", guest, "🏨 Guest checked in — Room 412 (Ava Patel)")
+  );
+
+  // 2️⃣ Room service
+  schedule(2000, () =>
+    send("/room-service", {
+      room: "412",
+      item: "Burger & Fries",
+      notes: "No onions"
+    }, "🍽️ Room service ordered — Burger & Fries")
+  );
+
+  // 3️⃣ Spa
+  schedule(3000, () =>
+    send("/spa", {
+      room: "412",
+      service: "Swedish Massage",
+      date: "2026-01-12",
+      time: "15:00"
+    }, "💆 Spa booked — Swedish Massage @ 3:00 PM")
+  );
+
+  // 4️⃣ Housekeeping
+  schedule(4000, () =>
+    send("/housekeeping", {
+      room: "412",
+      type: "Extra Towels",
+      time: "Evening",
+      notes: "2 sets please"
+    }, "🧹 Housekeeping requested — Extra towels")
+  );
+
+  // 5️⃣ Late checkout
+  schedule(5000, () =>
+    send("/late-checkout", {
+      room: "412",
+      checkoutTime: "1:00 PM",
+      reason: "Late flight"
+    }, "⏰ Late checkout requested — 1:00 PM")
+  );
+
+  // 6️⃣ Transportation
+  schedule(6000, () =>
+    send("/transportation", {
+      room: "412",
+      tripType: "Airport Drop-off",
+      location: "DFW Airport",
+      date: "2026-01-13",
+      time: "11:30",
+      passengers: 1
+    }, "🚗 Transportation scheduled — Airport drop-off")
+  );
+
+  // 7️⃣ Checkout
+  schedule(7200, () => {
+    send("/checkout", {
+      room: "412",
+      rating: 5,
+      comments: "Amazing stay"
+    }, "🧾 Checkout complete — Rating: 5⭐");
+    setIsRunning(false);
+  });
+};
+
 
   const stopSimulation = () => {
     clearTimers();

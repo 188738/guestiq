@@ -19,24 +19,43 @@ function Transportation() {
     setRequest({ ...request, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log("Transportation Request:", request);
+  console.log("📤 Transportation payload:");
+  console.table(request);
 
-    // 🔥 Later: send to Klaviyo Events API
-    alert(`✅ Transportation requested for Room ${request.room}`);
-
-    setRequest({
-      room: "",
-      tripType: "",
-      location: "",
-      date: "",
-      time: "",
-      passengers: 1,
-      notes: "",
+  try {
+    const response = await fetch("http://127.0.0.1:5001/transportation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(request)
     });
-  };
+
+    const data = await response.json();
+    console.log("📥 Backend response:", data);
+
+    if (data.success) {
+      alert(`✅ Transportation requested for Room ${request.room}`);
+      setRequest({
+        room: "",
+        tripType: "",
+        location: "",
+        date: "",
+        time: "",
+        passengers: 1,
+        notes: "",
+      });
+    } else {
+      alert("❌ Transportation request failed");
+    }
+  } catch (err) {
+    console.error("❌ Network error:", err);
+  }
+};
+
 
   return (
     <div className="transport-bg">

@@ -16,16 +16,35 @@ function RoomService() {
     setOrder({ ...order, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log("Room Service Order:", order);
+  console.log("📤 Room Service payload:");
+  console.table(order);
 
-    // 🔥 Later: send to Klaviyo Events API
-    alert(`✅ Room service request sent for Room ${order.room}`);
+  try {
+    const response = await fetch("http://127.0.0.1:5001/room-service", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(order)
+    });
 
-    setOrder({ room: "", item: "", notes: "" });
-  };
+    const data = await response.json();
+    console.log("📥 Backend response:", data);
+
+    if (data.success) {
+      alert(`✅ Room service request sent for Room ${order.room}`);
+      setOrder({ room: "", item: "", notes: "" });
+    } else {
+      alert("❌ Room service request failed");
+    }
+  } catch (err) {
+    console.error("❌ Network error:", err);
+  }
+};
+
 
 
 useEffect(() => {

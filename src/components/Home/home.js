@@ -34,8 +34,8 @@ function Home() {
 
             <div className="card" onClick={() => navigate("/simulate")}>
               <span className="icon">⚡</span>
-              <h3>Simulate Stay</h3>
-              <p>Auto-generate demo guest events</p>
+              <h3>Staff Demo Mode</h3>
+              <p>This is how it would look for the hotel staff</p>
             </div>
           </div>
         </div>

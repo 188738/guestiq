@@ -15,16 +15,34 @@ function SpecialRequests() {
     setRequest({ ...request, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log("Special Request:", request);
+  console.log("📤 Special Request payload:");
+  console.table(request);
 
-    // 🔥 Later: send to Klaviyo Events API
-    alert(`✅ Special request submitted for Room ${request.room}`);
+  try {
+    const response = await fetch("http://127.0.0.1:5001/special-request", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(request)
+    });
 
-    setRequest({ room: "", category: "", details: "" });
-  };
+    const data = await response.json();
+    console.log("📥 Backend response:", data);
+
+    if (data.success) {
+      alert(`✅ Special request submitted for Room ${request.room}`);
+      setRequest({ room: "", category: "", details: "" });
+    } else {
+      alert("❌ Special request failed");
+    }
+  } catch (err) {
+    console.error("❌ Network error:", err);
+  }
+};
 
   return (
     <div className="special-bg">

@@ -12,18 +12,50 @@ function CheckIn() {
     nights: 1,
   });
 
+  
+
   const handleChange = (e) => {
-    setGuest({ ...guest, [e.target.name]: e.target.value });
-  };
+  const { name, value } = e.target;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  setGuest({
+    ...guest,
+    [name]: name === "nights" ? Number(value) : value
+  });
+};
 
-    console.log("Guest Check-In:", guest);
-    alert(`✅ ${guest.name} checked in successfully!`);
 
-    setGuest({ name: "", email: "", room: "", nights: 1 });
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // 👇 Print everything that will be sent
+  console.log("📤 Submitting Guest Check-In:");
+  console.table(guest);
+
+  try {
+    const response = await fetch("http://127.0.0.1:5001/checkin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(guest)
+    });
+
+    const data = await response.json();
+
+    console.log("📥 Backend response:", data);
+
+    if (data.success) {
+      alert(`✅ ${guest.name} checked in!`);
+      setGuest({ name: "", email: "", room: "", nights: 1 });
+    } else {
+      alert("❌ Something went wrong");
+    }
+  } catch (err) {
+    console.error("❌ Network error:", err);
+  }
+};
+
+
 
   const goHome = () => {
     console.log("We are going home");

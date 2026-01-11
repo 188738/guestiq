@@ -16,16 +16,35 @@ function Housekeeping() {
     setRequest({ ...request, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log("Housekeeping Request:", request);
+  console.log("📤 Housekeeping payload:");
+  console.table(request);
 
-    // 🔥 Later: send to Klaviyo Events API
-    alert(`✅ Housekeeping request sent for Room ${request.room}`);
+  try {
+    const response = await fetch("http://127.0.0.1:5001/housekeeping", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(request)
+    });
 
-    setRequest({ room: "", type: "", time: "", notes: "" });
-  };
+    const data = await response.json();
+    console.log("📥 Backend response:", data);
+
+    if (data.success) {
+      alert(`✅ Housekeeping request sent for Room ${request.room}`);
+      setRequest({ room: "", type: "", time: "", notes: "" });
+    } else {
+      alert("❌ Housekeeping request failed");
+    }
+  } catch (err) {
+    console.error("❌ Network error:", err);
+  }
+};
+
 
   return (
     <div className="house-bg">

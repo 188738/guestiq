@@ -15,17 +15,36 @@ function Checkout() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log("Checkout details:", form);
+  console.log("📤 Checkout payload:");
+  console.table(form);
 
-    // 🔥 Later: send checkout event to Klaviyo
-    alert(`✅ Checkout complete for Room ${form.room}`);
+  try {
+    const response = await fetch("http://127.0.0.1:5001/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(form)
+    });
 
-    setForm({ room: "", rating: "", comments: "" });
-    navigate("/");
-  };
+    const data = await response.json();
+
+    console.log("📥 Backend response:", data);
+
+    if (data.success) {
+      alert(`✅ Checkout complete for Room ${form.room}`);
+      setForm({ room: "", rating: "", comments: "" });
+      navigate("/");
+    } else {
+      alert("❌ Checkout failed");
+    }
+  } catch (err) {
+    console.error("❌ Network error:", err);
+  }
+};
 
   return (
     <div className="checkout-bg">

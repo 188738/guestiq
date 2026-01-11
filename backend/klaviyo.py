@@ -1,30 +1,41 @@
-import os
 import requests
-from dotenv import load_dotenv
 
-load_dotenv()
-
-KLAVIYO_API_KEY = os.getenv("KLAVIYO_API_KEY")
+with open(".env") as f:
+    for line in f:
+        if line.startswith("KLAVIYO_PRIVATE_KEY"):
+            KLAVIYO_KEY = line.strip().split("=")[1]
 
 URL = "https://a.klaviyo.com/api/events/"
+
 HEADERS = {
-    "Authorization": f"Klaviyo-API-Key {KLAVIYO_API_KEY}",
-    "Accept": "application/json",
+    "Authorization": f"Klaviyo-API-Key {KLAVIYO_KEY}",
     "Content-Type": "application/json",
+    "Accept": "application/json",
     "revision": "2023-02-22"
 }
 
-def send_event(event_name, email, properties):
+def send_event(event_name, email, properties=None):
     payload = {
         "data": {
             "type": "event",
             "attributes": {
-                "metric": { "name": event_name },
-                "profile": { "email": email },
-                "properties": properties
+                "metric": {
+                    "name": event_name
+                },
+                "profile": {
+                    "email": email   # ✅ MUST be here
+                },
+                "properties": properties or {}
             }
         }
     }
 
-    response = requests.post(URL, json=payload, headers=HEADERS)
-    return response.status_code, response.text
+    response = requests.post(URL, headers=HEADERS, json=payload)
+
+    print("➡️ Sending event to Klaviyo...")
+    print(payload)
+    print("✅ Status Code:", response.status_code)
+    print("📨 Response:", response.text)
+
+    return response
+

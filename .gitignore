@@ -24,3 +24,9 @@ yarn-error.log*
 
 #databse key
 firebaseServiceAccount.json
+
+#database key
+
+backend/.env
+backend/firebaseServiceAccount.json
+backend/venv/

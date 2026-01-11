@@ -17,16 +17,35 @@ function SpaAppointment() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log("Spa Appointment Request:", form);
+  console.log("📤 Spa payload:");
+  console.table(form);
 
-    // 🔥 Later: send to Klaviyo Events API
-    alert(`✅ Spa appointment requested for Room ${form.room}`);
+  try {
+    const response = await fetch("http://127.0.0.1:5001/spa", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(form)
+    });
 
-    setForm({ room: "", service: "", date: "", time: "", notes: "" });
-  };
+    const data = await response.json();
+    console.log("📥 Backend response:", data);
+
+    if (data.success) {
+      alert(`✅ Spa appointment booked for Room ${form.room}`);
+      setForm({ room: "", service: "", date: "", time: "", notes: "" });
+    } else {
+      alert("❌ Spa booking failed");
+    }
+  } catch (err) {
+    console.error("❌ Network error:", err);
+  }
+};
+
 
   return (
     <div className="spa-bg">
