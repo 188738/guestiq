@@ -1,74 +1,154 @@
-# Getting Started with Create React App
+STAYSYNC
+Smart Guest Engagement powered by real-time Klaviyo Events
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+--------------------------------------------------
 
-## Available Scripts
+StaySync is a full-stack hospitality platform that turns every guest interaction
+(check-ins, room service, spa bookings, late checkout, transportation, and more)
+into real-time Klaviyo events for personalized engagement and CRM automation.
 
-In the project directory, you can run:
+Every guest action becomes:
+- A Firestore database record
+- A Klaviyo Event
+- A trigger for email, SMS, loyalty, and marketing automation
 
-### `npm start`
+--------------------------------------------------
+WHAT STAYSYNC DOES
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+StaySync connects:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+React Frontend
+→ Flask API
+→ Firestore Database
+→ Klaviyo Events API
+→ Email, SMS, CRM Automations
 
-### `npm test`
+This brings e-commerce style customer tracking to hotels.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+--------------------------------------------------
+FEATURES
 
-### `npm run build`
+Guest Check-In
+- Creates guest profile
+- Sends “Guest Checked In” event
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Room Service
+- Sends “Room Service Ordered” event
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Spa Appointments
+- Sends “Spa Appointment Booked” event
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Housekeeping Requests
+- Sends “Housekeeping Requested” event
 
-### `npm run eject`
+Late Checkout
+- Sends “Late Checkout Requested” event
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Transportation
+- Sends “Transportation Requested” event
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Checkout
+- Captures rating and feedback
+- Sends “Guest Checked Out” event
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Simulate Stay
+- Auto-generates a full guest journey
+- Sends all events to Firestore and Klaviyo
+- Shows live timeline
+- Click any event to view guest details
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+--------------------------------------------------
+WHO USES THIS
 
-## Learn More
+Guests use:
+- Check-In
+- Services & Amenities
+- Checkout
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Hotel Staff, Marketing & Management use:
+- Simulate Stay
+- Firestore data
+- Klaviyo automation dashboards
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+One platform. Two roles.
 
-### Code Splitting
+--------------------------------------------------
+HOW TO RUN THE PROJECT
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1) Start the Backend
 
-### Analyzing the Bundle Size
+Open a terminal and run:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+cd backend
+source venv/bin/activate
+python app.py
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# guestiq
+The backend will run at:
+http://127.0.0.1:5001
 
 
-for every time you open up the backend in the terminal you have to run 'source venv/bin/activate'
+2) Start the Frontend
+
+Open a second terminal and run:
+
+cd frontend
+npm install
+npm start
+
+The frontend will run at:
+http://localhost:3000
+
+
+3) Open the App
+
+Open your browser:
+http://localhost:3000
+
+--------------------------------------------------
+SIMULATION MODE
+
+The “Simulate Stay” tab is a demo and admin tool.
+
+It:
+- Creates a demo guest
+- Runs a full hotel stay
+- Sends real Klaviyo events
+- Stores everything in Firestore
+- Displays a live timeline
+- Lets you click events to view guest details
+
+Used for:
+- Demos
+- Testing
+- Hackathons
+- Sales and presentations
+
+--------------------------------------------------
+KLAVIYO EVENTS GENERATED
+
+Guest Checked In
+Room Service Ordered
+Spa Appointment Booked
+Housekeeping Requested
+Late Checkout Requested
+Transportation Requested
+Guest Checked Out
+
+These can trigger:
+- Welcome messages
+- Upsells
+- Loyalty flows
+- Surveys
+- Recovery emails
+- VIP automation
+
+--------------------------------------------------
+WHY THIS PROJECT MATTERS
+
+Hotels run on disconnected systems.
+StaySync turns them into a real-time CRM.
+
+This is Klaviyo for hospitality.
+
+--------------------------------------------------
+END
